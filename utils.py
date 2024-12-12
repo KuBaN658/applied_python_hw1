@@ -48,7 +48,6 @@ def generate_realistic_temperature_data(cities, num_years=10):
     return df
 
 
-@st.cache_resource
 async def get_weather(city, api_key):
     """
     Асинхронное получение текущей температуры для указанного города через API OpenWeatherMap.
