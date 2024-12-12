@@ -90,7 +90,8 @@ async def main():
                 # Асинхронный запрос для получения текущей температуры через OpenWeatherMap API
                 # так как у нас IO задача, то ассинхронные запросы работают быстрее
                 # все эксперименты в experiment.ipynb
-                resp = await get_weather(city, api_key)
+                task = asyncio.create_task(get_weather(city, api_key))
+                resp = await task
                 
                 if 'main' in resp:
                     temp = resp['main']['temp']  # Текущая температура
